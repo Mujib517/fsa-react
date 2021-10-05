@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import MathObj, { PI } from './Math';
 
 class Counter extends React.Component {
   state = { count: 0 };
@@ -23,9 +23,11 @@ class Counter extends React.Component {
 // }
 
 function App() {
+  var m1 = new MathObj();
+  const res = m1.add(10, 20);
   return (
     <div className="App">
-      <h1>Hello React!!</h1>
+      <h1>Hello React!! {res} {PI}</h1>
       <Counter></Counter>
     </div>
   );
