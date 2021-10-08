@@ -1,7 +1,15 @@
+import Callback from "./Callback";
 import SpecialCounter from "./SpecialCounter";
 
 function Main() {
-    return <SpecialCounter count={10} />
+
+    function notify() {
+        // fetching data
+        console.log("in main component");
+    }
+
+
+    return <Callback onNotify={notify} />
 }
 
 export default Main;

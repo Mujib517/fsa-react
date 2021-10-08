@@ -1,7 +1,5 @@
 import React from 'react';
 import Main from './Main';
-import Name from './Name';
-import SpecialCounter from './SpecialCounter';
 
 function App() {
     return <div>
