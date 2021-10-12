@@ -1,10 +1,9 @@
 import React from 'react';
-import Main from './Main';
+import Users from './Users';
 
 function App() {
     return <div>
-        <h1>Hello React</h1>
-        <Main />
+        <Users />
     </div>
 }
 
