@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import User from './User';
 
 class Users extends Component {
 
@@ -19,13 +20,7 @@ class Users extends Component {
         return <>
             <h1>Users</h1>
             {
-                this.state.users.map(user => {
-                    return <>
-                        <h3>{user.login}</h3>
-                        <h4>{user.type}</h4>
-                        <hr />
-                    </>
-                })
+                this.state.users.map(user => <User user={user} />)
             }
         </>
     }
