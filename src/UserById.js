@@ -7,7 +7,6 @@ class UserById extends React.Component {
     constructor(props) {
         super();
 
-
         const id = props.match.params.id;
         axios.get(`https://api.github.com/users/${id}`)
             .then(res => {
