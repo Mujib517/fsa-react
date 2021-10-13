@@ -1,5 +1,6 @@
-function Header() {
+import { Link } from 'react-router-dom';
 
+function Header() {
     return <>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container-fluid">
@@ -7,16 +8,16 @@ function Header() {
                     <a class="navbar-brand" href="#">FSA</a>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
+                            <Link class="nav-link" to="/">Home</Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <Link class="nav-link" to="/about">About</Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Users</a>
+                            <Link class="nav-link" to="/users">Users</Link>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Contact</a>
+                            <Link class="nav-link" to="/contact">Contact</Link>
                         </li>
                     </ul>
                 </div>
