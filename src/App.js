@@ -6,6 +6,7 @@ import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Contact from './Contact';
+import NotFound from './NotFound';
 
 function App() {
     return <div>
@@ -16,7 +17,8 @@ function App() {
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/users" component={Users} />
-                <Redirect to='/' />
+                {/* <Redirect to='/' /> */}
+                <Route path="**" component={NotFound} />
             </Switch>
             <Footer />
         </BrowserRouter>
