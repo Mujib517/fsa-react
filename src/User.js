@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function User(props) {
     const { user } = props;
 
@@ -8,9 +10,9 @@ function User(props) {
                 <div class="card-body">
                     <h5 class="card-title">{user.login}</h5>
                     <p class="card-text">{user.type}</p>
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <Link to={`/users/${user.login}`} class="btn btn-sm btn-primary">
                         Select
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
