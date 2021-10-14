@@ -5,10 +5,8 @@ import Loader from './Loader';
 class UserById extends React.Component {
     state = { user: {}, loading: true };
 
-    constructor(props) {
-        super();
-
-        const id = props.match.params.id;
+    componentDidMount = () => {
+        const id = this.props.match.params.id;
         axios.get(`https://api.github.com/users/${id}`)
             .then(res => {
                 this.setState({ user: res.data, loading: false });

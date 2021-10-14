@@ -9,14 +9,13 @@ class Users extends Component {
 
     state = { users: [], loading: true, hasError: false };
 
-    constructor() {
-        super();
-        /*
-            Http Verbs GET, POST, PUT, PATCH and DELETE
-        */
-        axios.get('https://api.github.com/users1')
-            .then(res => this.setState({ users: res.data, loading: false }))
-            .catch(e => this.setState({ hasError: true, loading: false }));
+    componentDidMount = async () => {
+        try {
+            const response = await axios.get('https://api.github.com/users');
+            this.setState({ users: response.data, loading: false });
+        } catch (e) {
+            this.setState({ hasError: true, loading: false });
+        }
     }
 
     render() {
