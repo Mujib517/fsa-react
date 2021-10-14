@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import User from './User';
 import Error from './util/Error';
-
-import Loader from './Loader';
+import Loader from './util/Loader';
 
 class Users extends Component {
 

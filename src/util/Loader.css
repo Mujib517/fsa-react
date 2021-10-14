@@ -1,0 +1,9 @@
+.loader{
+    border:1px solid #369;
+    width:100px;
+    height:100px;
+    position: absolute;
+    top:44%;
+    left:45%;
+    padding:3px;
+}

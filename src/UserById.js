@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Loader from './Loader';
+import Loader from './util/Loader';
 
 class UserById extends React.Component {
     state = { user: {}, loading: true };
