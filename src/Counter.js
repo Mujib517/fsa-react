@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 
 // events
+// life cycle events
+// mounting, unmounting
+// pub-sub
 export default class Counter extends Component {
+
     state = { count: 0 };
 
-    // constructor() {
-    //     super();
-    //     // fixing this context
-    //     // this.onBtnClick = this.onBtnClick.bind(this);
-    // }
+    componentDidMount() {
+        let cnt = this.state.count;
+        this.timer = setInterval(() => {
+            console.log("updating...");
+            this.setState({ count: ++cnt });
+        }, 1000);
+    }
 
-    // async
-    onBtnClick = () => {
-        this.setState({ count: ++this.state.count });
-        console.log(this.state.count);
+    componentDidUpdate() {
+        console.log("updated");
     }
 
     render() {
-        return <div>
-            <h1>Count: {this.state.count} </h1>
-            <button onClick={this.onBtnClick}>++</button>
-        </div>
+        return <h1>Count: {this.state.count}</h1>
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+        console.log("Unmounting...");
     }
 }
