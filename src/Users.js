@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import User from './User';
-import LoaderImg from './img/loading.gif';
+
+import Loader from './Loader';
 
 class Users extends Component {
 
@@ -12,16 +13,14 @@ class Users extends Component {
         /*
             Http Verbs GET, POST, PUT, PATCH and DELETE
         */
-        axios.get('https://api.github.com/users1')
+        axios.get('https://api.github.com/users')
             .then(res => this.setState({ users: res.data, loading: false }))
             .catch(e => this.setState({ loading: false }));
     }
 
     render() {
         return <>
-            {/* {this.state.loading === true ? <img src={LoaderImg} /> : null} */}
-            {this.state.loading && <img src={LoaderImg} />}
-
+            <Loader show={this.state.loading} />
             <h1>Users</h1>
             {
                 this.state.users.map(user => <User user={user} />)

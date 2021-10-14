@@ -19,8 +19,8 @@ function App() {
                 <Route path="/contact" component={Contact} />
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
-                {/* <Redirect to='/' /> */}
                 <Route path="**" component={NotFound} />
+                {/* <Redirect to='/' /> */}
             </Switch>
             <Footer />
         </BrowserRouter>
