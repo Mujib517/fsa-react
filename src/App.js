@@ -10,6 +10,7 @@ import NotFound from './NotFound';
 import UserById from './UserById';
 import Counter from './Counter';
 import Books from './Books';
+import CounterWithHooks from './CounterWithHooks';
 
 function App() {
     return <div>
@@ -22,7 +23,7 @@ function App() {
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
                 <Route path="/books" component={Books} />
-                <Route path="/count" component={Counter} />
+                <Route path="/count" component={CounterWithHooks} />
                 <Route path="**" component={NotFound} />
                 {/* <Redirect to='/' /> */}
             </Switch>
