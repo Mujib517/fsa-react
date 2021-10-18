@@ -1,9 +1,9 @@
 function Error({ show }) {
-    return show && <div className="row-mt">
+    return show ? <div className="row-mt">
         <div className="col-6">
             <div className="alert alert-danger">Something went wrong. Please try again later</div>
         </div>
-    </div>
+    </div> : null;
 }
 
 export default Error;
