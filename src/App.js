@@ -9,6 +9,7 @@ import Contact from './Contact';
 import NotFound from './NotFound';
 import UserById from './UserById';
 import Counter from './Counter';
+import Books from './Books';
 
 function App() {
     return <div>
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/contact" component={Contact} />
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
+                <Route path="/books" component={Books} />
                 <Route path="/count" component={Counter} />
                 <Route path="**" component={NotFound} />
                 {/* <Redirect to='/' /> */}
