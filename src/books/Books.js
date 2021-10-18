@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Book from './Book';
 
@@ -42,6 +43,7 @@ const Books = () => {
 
     return <div>
         <h1>Books</h1>
+        <Link to="/books/new" className="btn btn-danger btn-sm">Add New Book</Link>
         {books.map(book => <Book book={book} />)}
     </div>
 }
