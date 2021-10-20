@@ -60,6 +60,18 @@ const Books = () => {
         setLimit(evt.target.value);
     }
 
+    const onRemove = async (id) => {
+        try {
+            const url = `https://my-node-api-demo-2.herokuapp.com/api/books/${id}`;
+            await axios.delete(url);
+            const getUrl = `https://my-node-api-demo-2.herokuapp.com/api/books?pageIndex=${pageIndex}&limit=${limit}`
+            const res = await axios.get(getUrl);
+            setData(res.data);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const isLastPage = () => pageIndex === data.metadata.totalPages - 1;
     const isFirstPage = () => pageIndex === 0;
 
@@ -94,9 +106,10 @@ const Books = () => {
                 <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Actions</th>
             </thead>
             <tbody>
-                {data.books.map(book => <Book book={book} />)}
+                {data.books.map(book => <Book onRemove={onRemove} book={book} />)}
             </tbody>
         </table>
     </div>
