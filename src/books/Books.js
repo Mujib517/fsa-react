@@ -34,7 +34,7 @@ const Books = () => {
     useEffect(async () => {
         try {
             const res = await axios.get('https://my-node-api-demo-2.herokuapp.com/api/books');
-            setBooks(res.data);
+            setBooks(res.data.books);
         } catch (e) {
             // TODO: error handling
             console.log(e);
@@ -44,7 +44,18 @@ const Books = () => {
     return <div>
         <h1>Books</h1>
         <Link to="/books/new" className="btn btn-danger btn-sm">Add New Book</Link>
-        {books.map(book => <Book book={book} />)}
+        <table className="table table-bordered">
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                {books.map(book => <Book book={book} />)}
+            </tbody>
+        </table>
+
+
     </div>
 }
 
