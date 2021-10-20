@@ -31,7 +31,7 @@ const Books = () => {
 
     const [data, setData] = useState({ books: [], metadata: {} });
     const [pageIndex, setPageIndex] = useState(0);
-    const limit = 2;
+    const [limit, setLimit] = useState(10);
 
     useEffect(async () => {
         try {
@@ -42,7 +42,7 @@ const Books = () => {
             // TODO: error handling
             console.log(e);
         }
-    }, [pageIndex]);
+    }, [pageIndex, limit]);
 
     const onPrev = () => {
         if (pageIndex !== 0) {
@@ -56,6 +56,10 @@ const Books = () => {
         setPageIndex(++currPage);
     }
 
+    const onLimitChange = (evt) => {
+        setLimit(evt.target.value);
+    }
+
     const isLastPage = () => pageIndex === data.metadata.totalPages - 1;
     const isFirstPage = () => pageIndex === 0;
 
@@ -63,6 +67,14 @@ const Books = () => {
         <h1>Books</h1>
         <Link to="/books/new" className="btn btn-danger btn-sm">Add New Book</Link>
         <div className="row mt-3">
+            <div className="col-1">
+                <select onChange={onLimitChange}>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                </select>
+            </div>
             <div className="col-1">
                 <button disabled={isFirstPage()} onClick={onPrev} class="btn btn-sm btn-primary">
                     <i className="fa fa-arrow-left"></i>
@@ -87,8 +99,6 @@ const Books = () => {
                 {data.books.map(book => <Book book={book} />)}
             </tbody>
         </table>
-
-
     </div>
 }
 
