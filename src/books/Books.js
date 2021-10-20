@@ -33,7 +33,7 @@ const Books = () => {
     const [pageIndex, setPageIndex] = useState(0);
     const [limit, setLimit] = useState(10);
 
-    useEffect(async () => {
+    const getData = async () => {
         try {
             const url = `https://my-node-api-demo-2.herokuapp.com/api/books?pageIndex=${pageIndex}&limit=${limit}`
             const res = await axios.get(url);
@@ -42,6 +42,10 @@ const Books = () => {
             // TODO: error handling
             console.log(e);
         }
+    }
+
+    useEffect(async () => {
+        getData();
     }, [pageIndex, limit]);
 
     const onPrev = () => {
@@ -64,9 +68,7 @@ const Books = () => {
         try {
             const url = `https://my-node-api-demo-2.herokuapp.com/api/books/${id}`;
             await axios.delete(url);
-            const getUrl = `https://my-node-api-demo-2.herokuapp.com/api/books?pageIndex=${pageIndex}&limit=${limit}`
-            const res = await axios.get(getUrl);
-            setData(res.data);
+            getData();
         } catch (e) {
             console.log(e);
         }
