@@ -1,7 +1,26 @@
+import { useState } from "react";
+import bookService from "../services/bookService";
+
 function NewBook() {
 
-    function onSave() {
-        console.log("Saving...");
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+
+    async function onSave() {
+        const data = {
+            name,
+            price
+        };
+
+        await bookService.post(data);
+    }
+
+    function onNameChange(evt) {
+        setName(evt.target.value);
+    }
+
+    function onPriceChange(evt) {
+        setPrice(evt.target.value);
     }
 
     return <form>
@@ -10,12 +29,12 @@ function NewBook() {
         </div>
         <div className="row mt-3">
             <div className="col-4">
-                <input type="text" placeholder="Name" className="form-control" />
+                <input onChange={onNameChange} type="text" placeholder="Name" className="form-control" />
             </div>
         </div>
         <div className="row mt-3">
             <div className="col-4">
-                <input type="text" placeholder="Price" className="form-control" />
+                <input onChange={onPriceChange} type="text" placeholder="Price" className="form-control" />
             </div>
         </div>
         <div className="row mt-3">

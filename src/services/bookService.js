@@ -12,8 +12,14 @@ function remove(id) {
     return axios.delete(url);
 }
 
+function post(book) {
+    const url = `${host}/api/books`;
+    return axios.post(url, book);
+}
+
 export default {
     get,
-    remove
+    remove,
+    post
 }
 
