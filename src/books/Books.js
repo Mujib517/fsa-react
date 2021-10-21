@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Book from './Book';
+import bookService from '../services/bookService';
 
 // functional component
 // class Books extends React.Component {
@@ -35,8 +35,7 @@ const Books = () => {
 
     const getData = async () => {
         try {
-            const url = `https://my-node-api-demo-2.herokuapp.com/api/books?pageIndex=${pageIndex}&limit=${limit}`
-            const res = await axios.get(url);
+            const res = await bookService.get(pageIndex, limit);
             setData(res.data);
         } catch (e) {
             // TODO: error handling
@@ -66,8 +65,7 @@ const Books = () => {
 
     const onRemove = async (id) => {
         try {
-            const url = `https://my-node-api-demo-2.herokuapp.com/api/books/${id}`;
-            await axios.delete(url);
+            await bookService.remove(id);
             getData();
         } catch (e) {
             console.log(e);
