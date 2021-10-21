@@ -1,7 +1,7 @@
 import { useState } from "react";
 import bookService from "../services/bookService";
 
-function NewBook() {
+function NewBook(props) {
 
     const [book, setBook] = useState({});
     const [isSuccess, setSuccess] = useState(false);
@@ -15,6 +15,7 @@ function NewBook() {
 
     async function onSave() {
         await bookService.post(book);
+        props.history.push('/books');
         reset();
     }
 
