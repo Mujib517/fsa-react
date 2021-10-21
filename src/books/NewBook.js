@@ -6,20 +6,23 @@ function NewBook() {
     const [book, setBook] = useState({});
 
     async function onSave() {
-        console.log(book)
-
         await bookService.post(book);
     }
 
-    function onNameChange(evt) {
-        const newState = { ...book, name: evt.target.value };
+    function onValueChange(e) {
+        const newState = { ...book, [e.target.name]: e.target.value };
         setBook(newState);
     }
 
-    function onPriceChange(evt) {
-        const newState = { ...book, price: evt.target.value };
-        setBook(newState);
-    }
+    // function onNameChange(evt) {
+    //     const newState = { ...book, name: evt.target.value };
+    //     setBook(newState);
+    // }
+
+    // function onPriceChange(evt) {
+    //     const newState = { ...book, price: evt.target.value };
+    //     setBook(newState);
+    // }
 
     return <form>
         <div className="row mt-3">
@@ -27,12 +30,12 @@ function NewBook() {
         </div>
         <div className="row mt-3">
             <div className="col-4">
-                <input onChange={onNameChange} type="text" placeholder="Name" className="form-control" />
+                <input name="name" onChange={onValueChange} type="text" placeholder="Name" className="form-control" />
             </div>
         </div>
         <div className="row mt-3">
             <div className="col-4">
-                <input onChange={onPriceChange} type="text" placeholder="Price" className="form-control" />
+                <input name="price" onChange={onValueChange} type="text" placeholder="Price" className="form-control" />
             </div>
         </div>
         <div className="row mt-3">
