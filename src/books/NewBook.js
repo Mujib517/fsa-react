@@ -4,9 +4,18 @@ import bookService from "../services/bookService";
 function NewBook() {
 
     const [book, setBook] = useState({});
+    const [isSuccess, setSuccess] = useState(false);
+
+
+    function reset() {
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 2000);
+        setBook({ name: '', price: '' });
+    }
 
     async function onSave() {
         await bookService.post(book);
+        reset();
     }
 
     function onValueChange(e) {
@@ -24,26 +33,33 @@ function NewBook() {
     //     setBook(newState);
     // }
 
-    return <form>
-        <div className="row mt-3">
-            <h1>Add new book</h1>
-        </div>
-        <div className="row mt-3">
-            <div className="col-4">
-                <input name="name" onChange={onValueChange} type="text" placeholder="Name" className="form-control" />
+    return <>
+        {
+            isSuccess && <div className="col-5 alert alert-success">
+                Successfully Saved!
             </div>
-        </div>
-        <div className="row mt-3">
-            <div className="col-4">
-                <input name="price" onChange={onValueChange} type="text" placeholder="Price" className="form-control" />
+        }
+        <form>
+            <div className="row mt-3">
+                <h1>Add new book</h1>
             </div>
-        </div>
-        <div className="row mt-3">
-            <div className="col-4">
-                <button type="button" onClick={onSave} class="btn btn-sm btn-success">Save</button>
+            <div className="row mt-3">
+                <div className="col-4">
+                    <input value={book.name} name="name" onChange={onValueChange} type="text" placeholder="Name" className="form-control" />
+                </div>
             </div>
-        </div>
-    </form>
+            <div className="row mt-3">
+                <div className="col-4">
+                    <input value={book.price} name="price" onChange={onValueChange} type="text" placeholder="Price" className="form-control" />
+                </div>
+            </div>
+            <div className="row mt-3">
+                <div className="col-4">
+                    <button type="button" onClick={onSave} class="btn btn-sm btn-success">Save</button>
+                </div>
+            </div>
+        </form>
+    </>
 }
 
 export default NewBook;
