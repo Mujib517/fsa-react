@@ -3,24 +3,22 @@ import bookService from "../services/bookService";
 
 function NewBook() {
 
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
+    const [book, setBook] = useState({});
 
     async function onSave() {
-        const data = {
-            name,
-            price
-        };
+        console.log(book)
 
-        await bookService.post(data);
+        await bookService.post(book);
     }
 
     function onNameChange(evt) {
-        setName(evt.target.value);
+        const newState = { ...book, name: evt.target.value };
+        setBook(newState);
     }
 
     function onPriceChange(evt) {
-        setPrice(evt.target.value);
+        const newState = { ...book, price: evt.target.value };
+        setBook(newState);
     }
 
     return <form>
