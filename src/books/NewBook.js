@@ -24,6 +24,10 @@ function NewBook(props) {
         setBook(newState);
     }
 
+    function isFormInvalid() {
+        return !book.name || !book.price;
+    }
+
     // function onNameChange(evt) {
     //     const newState = { ...book, name: evt.target.value };
     //     setBook(newState);
@@ -46,17 +50,26 @@ function NewBook(props) {
             </div>
             <div className="row mt-3">
                 <div className="col-4">
-                    <input value={book.name} name="name" onChange={onValueChange} type="text" placeholder="Name" className="form-control" />
+                    <input value={book.name} name="name"
+                        onChange={onValueChange} type="text"
+                        placeholder="Name*" className="form-control" />
+
+                    {book.name ? null : <span class="text-danger">Required</span>}
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-4">
-                    <input value={book.price} name="price" onChange={onValueChange} type="text" placeholder="Price" className="form-control" />
+                    <input value={book.price}
+                        name="price" onChange={onValueChange}
+                        type="text" placeholder="Price*"
+                        className="form-control" />
+
+                    {book.price ? null : <span class="text-danger">Required</span>}
                 </div>
             </div>
             <div className="row mt-3">
                 <div className="col-4">
-                    <button type="button" onClick={onSave} class="btn btn-sm btn-success">Save</button>
+                    <button disabled={isFormInvalid()} type="button" onClick={onSave} class="btn btn-sm btn-success">Save</button>
                 </div>
             </div>
         </form>
