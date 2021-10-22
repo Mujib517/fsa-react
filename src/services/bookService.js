@@ -21,10 +21,12 @@ function put(book) {
     return axios.put(`${host}/api/books/${book.id}`, book);
 }
 
-export default {
+const bookSvc = {
     get,
     remove,
     post,
     put
 }
+
+export default bookSvc;
 

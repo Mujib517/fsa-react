@@ -88,3 +88,12 @@ function NewBook(props) {
 }
 
 export default NewBook;
+
+// pipeline
+// build : npm install, npm test, security checks, npm run build, deploy dev, qa, stage
+// environments: local, dev, Qa, stage, prod,
+// stage.facebook.com
+// java (1MB) -> .jar(100KB)
+// .net -> .exe
+// android -> .apk
+// javascript -> minify -> uglify -> .zip

@@ -3,7 +3,7 @@ import './Loader.css';
 
 function Loader({ show }) {
     return show && <div class="loader">
-        <img src={LoaderImg} />
+        <img alt="loading" src={LoaderImg} />
         <span>Loading...</span>
     </div>
 

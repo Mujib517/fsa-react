@@ -27,7 +27,7 @@ import bookService from '../services/bookService';
 // }
 
 // hooks
-const Books = ({history}) => {
+const Books = ({ history }) => {
 
     const [data, setData] = useState({ books: [], metadata: {} });
     const [pageIndex, setPageIndex] = useState(0);
@@ -41,9 +41,9 @@ const Books = ({history}) => {
             // TODO: error handling
             console.log(e);
         }
-    }
+    };
 
-    useEffect(async () => {
+    useEffect(() => {
         getData();
     }, [pageIndex, limit]);
 
@@ -103,13 +103,17 @@ const Books = ({history}) => {
         </div>
         <table className="table table-bordered">
             <thead>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
-                {data.books.map(book => <Book history={history} onRemove={onRemove} book={book} />)}
+                {data.books.map(
+                    book => <Book key={book.id} history={history} onRemove={onRemove} book={book} />
+                )}
             </tbody>
         </table>
     </div>

@@ -5,7 +5,7 @@ function Header() {
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container-fluid">
                 <div class="navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="#">FSA</a>
+                    <Link to="/" class="navbar-brand">FSA</Link>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <Link class="nav-link" to="/">Home</Link>
