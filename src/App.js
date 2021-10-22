@@ -12,6 +12,7 @@ import Counter from './Counter';
 import Books from './books/Books';
 import CounterWithHooks from './CounterWithHooks';
 import NewBook from './books/NewBook';
+import EditBook from './books/EditBook';
 
 function App() {
     return <div>
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
                 <Route path="/books/new" component={NewBook} />
+                <Route path="/books/:id/update" component={EditBook} />
                 <Route path="/books" component={Books} />
                 <Route path="/count" component={CounterWithHooks} />
                 <Route path="**" component={NotFound} />

@@ -27,7 +27,7 @@ import bookService from '../services/bookService';
 // }
 
 // hooks
-const Books = () => {
+const Books = ({history}) => {
 
     const [data, setData] = useState({ books: [], metadata: {} });
     const [pageIndex, setPageIndex] = useState(0);
@@ -109,7 +109,7 @@ const Books = () => {
                 <th>Actions</th>
             </thead>
             <tbody>
-                {data.books.map(book => <Book onRemove={onRemove} book={book} />)}
+                {data.books.map(book => <Book history={history} onRemove={onRemove} book={book} />)}
             </tbody>
         </table>
     </div>

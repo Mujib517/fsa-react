@@ -1,8 +1,11 @@
-export default function Book({ book, onRemove }) {
+export default function Book({ book, onRemove, history }) {
 
     const onDelete = () => {
-        console.log("delete", book.id);
         onRemove(book.id);
+    }
+
+    const onEdit = () => {
+        history.push(`/books/${book.id}/update`, { book: book })
     }
 
     return <tr>
@@ -10,6 +13,10 @@ export default function Book({ book, onRemove }) {
         <td>{book.name}</td>
         <td>$ {book.price}</td>
         <td>
+            <button onClick={onEdit} className="btn btn-sm btn-success">
+                <i className="fa fa-edit"></i>
+            </button>
+            &nbsp;
             <button onClick={onDelete} className="btn btn-sm btn-danger">
                 <i className="fa fa-remove"></i>
             </button>

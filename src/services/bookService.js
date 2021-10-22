@@ -17,9 +17,14 @@ function post(book) {
     return axios.post(url, book);
 }
 
+function put(book) {
+    return axios.put(`${host}/api/books/${book.id}`, book);
+}
+
 export default {
     get,
     remove,
-    post
+    post,
+    put
 }
 
