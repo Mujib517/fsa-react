@@ -5,7 +5,8 @@ export default function Book({ book, onRemove, history }) {
     }
 
     const onEdit = () => {
-        history.push(`/books/${book.id}/update`, { book: book })
+        history.push(`/books/new`, { book: book })
+        // history.push(`/books/${book.id}/update`, { book: book })
     }
 
     return <tr>

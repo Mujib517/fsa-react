@@ -1,11 +1,20 @@
 import { useState } from "react";
 import bookService from "../services/bookService";
 
+function Heading({ book }) {
+    return <div className="row mt-3">
+        {book ?
+            <h1>Edit book</h1> :
+            <h1>Add new book</h1>
+        }
+    </div>
+}
+
 function NewBook(props) {
 
-    const [book, setBook] = useState({});
+    const currentBook = props.location?.state?.book;
+    const [book, setBook] = useState(currentBook || {});
     const [isSuccess, setSuccess] = useState(false);
-
 
     function reset() {
         setSuccess(true);
@@ -14,7 +23,11 @@ function NewBook(props) {
     }
 
     async function onSave() {
-        await bookService.post(book);
+        if (currentBook) {
+            await bookService.put(book);
+        } else {
+            await bookService.post(book);
+        }
         props.history.push('/books');
         reset();
     }
@@ -45,9 +58,7 @@ function NewBook(props) {
             </div>
         }
         <form>
-            <div className="row mt-3">
-                <h1>Add new book</h1>
-            </div>
+            <Heading book={currentBook} />
             <div className="row mt-3">
                 <div className="col-4">
                     <input value={book.name} name="name"
