@@ -26,6 +26,7 @@ function Header() {
                             <Link class="nav-link" to="/count">Counter</Link>
                         </li>
                     </ul>
+                    <Link to="/login" className="btn btn-danger btn-sm">Login</Link>
                 </div>
             </div>
         </nav>

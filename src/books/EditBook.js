@@ -4,10 +4,10 @@ import bookService from '../services/bookService';
 function EditBook(props) {
     const currentBook = props.location.state.book;
 
-    const [book] = useState(currentBook);
+    const [book,setBook] = useState(currentBook);
     const [isSuccess, setSuccess] = useState(false);
 
-    function onValueChange() {
+    function onValueChange(e) {
         const newState = { ...book, [e.target.name]: e.target.value };
         setBook(newState);
     }

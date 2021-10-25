@@ -12,6 +12,7 @@ import Books from './books/Books';
 import CounterWithHooks from './CounterWithHooks';
 import NewBook from './books/NewBook';
 import EditBook from './books/EditBook';
+import Login from './Login';
 
 function App() {
     return <div>
@@ -20,6 +21,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/about" component={About} />
+                <Route path="/login" component={Login} />
                 <Route path="/contact" component={Contact} />
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
