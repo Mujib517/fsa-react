@@ -6,11 +6,14 @@ const userService = {
     login: function (user) {
         return axios.post(`${host}/api/users/login`, user);
     },
-    saveToken(token) {
+    saveToken: function (token) {
         localStorage.setItem('token', token);
     },
-    getToken() {
+    getToken: function () {
         return localStorage.getItem('token');
+    },
+    logout: function () {
+        localStorage.removeItem('token');
     }
 }
 

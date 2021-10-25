@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
+import userService from './services/userService';
 
-function Header() {
+function Header(props) {
+
+    function onLogout() {
+        userService.logout();
+        // props.history.push('/login');
+    }
+
     return <>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <div class="container-fluid">
@@ -27,6 +34,8 @@ function Header() {
                         </li>
                     </ul>
                     <Link to="/login" className="btn btn-danger btn-sm">Login</Link>
+                    &nbsp;
+                    <button onClick={onLogout} className="btn btn-danger btn-sm">Logout</button>
                 </div>
             </div>
         </nav>

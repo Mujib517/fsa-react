@@ -38,8 +38,12 @@ const Books = ({ history }) => {
             const res = await bookService.get(pageIndex, limit);
             setData(res.data);
         } catch (e) {
-            // TODO: error handling
-            console.log(e);
+            if (e.status === 401) {
+                history.push('/login');
+            } else {
+                // error handling
+                console.log(e.status, "error");
+            }
         }
     };
 
@@ -107,6 +111,7 @@ const Books = ({ history }) => {
                     <th>Id</th>
                     <th>Name</th>
                     <th>Price</th>
+                    <th>Last Updated</th>
                     <th>Actions</th>
                 </tr>
             </thead>
