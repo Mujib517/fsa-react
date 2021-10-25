@@ -8,7 +8,8 @@ function EditBook(props) {
     const [isSuccess, setSuccess] = useState(false);
 
     function onValueChange() {
-
+        const newState = { ...book, [e.target.name]: e.target.value };
+        setBook(newState);
     }
 
     async function onSave() {
