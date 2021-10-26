@@ -34,11 +34,20 @@ function put(book) {
     return axios.put(`${host}/api/books/${book.id}`, book, { headers });
 }
 
+function getById(id) {
+    const url = `${host}/api/books/${id}`;
+    const headers = {
+        authorization: 'Bearer ' + userService.getToken('token')
+    };
+    return axios.get(url, { headers });
+}
+
 const bookSvc = {
     get,
     remove,
     post,
-    put
+    put,
+    getById
 }
 
 export default bookSvc;

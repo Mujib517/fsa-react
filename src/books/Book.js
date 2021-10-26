@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import dateUtils from '../util/dateUtils';
 
 export default function Book({ book, onRemove, history }) {
@@ -13,7 +14,9 @@ export default function Book({ book, onRemove, history }) {
 
     return <tr>
         <td>{book.id}</td>
-        <td>{book.name}</td>
+        <td>
+            <Link to={`/books/${book.id}`}>{book.name}</Link>
+        </td>
         <td>$ {book.price}</td>
         <td>{dateUtils.getRelativeTime(book.updatedAt)}</td>
         <td>

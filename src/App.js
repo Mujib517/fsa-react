@@ -13,6 +13,7 @@ import CounterWithHooks from './CounterWithHooks';
 import NewBook from './books/NewBook';
 import EditBook from './books/EditBook';
 import Login from './Login';
+import BookDetail from './books/BookDetail';
 
 function App() {
     return <div>
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/contact" component={Contact} />
                 <Route path="/users/:id" component={UserById} />
                 <Route path="/users" component={Users} />
+                <Route path="/books/:id" component={BookDetail} />
                 <Route path="/books/new" component={NewBook} />
                 <Route path="/books/:id/update" component={EditBook} />
                 <Route path="/books" component={Books} />

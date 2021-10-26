@@ -5,11 +5,14 @@ function CounterWithHooks() {
 
     useEffect(() => {
         // setCount(100);
-
         setTimeout(() => {
             let cnt = count;
+            console.log(count, 'count');
             setCount(++cnt);
         }, 1000);
+        // return () => {
+        //     console.log("cleaned up");
+        // }
     }, [count]);
 
     function onInc() {
