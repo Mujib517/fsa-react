@@ -38,12 +38,10 @@ const Books = ({ history }) => {
             const res = await bookService.get(pageIndex, limit);
             setData(res.data);
         } catch (e) {
-            if (e.status === 401) {
+            if (e.response.status === 401) {
                 history.push('/login');
-            } else {
-                // error handling
-                console.log(e.status, "error");
             }
+            console.log(e, "error");
         }
     };
 
