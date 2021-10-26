@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Loader from './util/Loader';
 import Error from './util/Error';
+import ShouldRender from './util/ShouldRender';
 
 class UserById extends React.Component {
     state = { user: {}, loading: true };
@@ -24,9 +25,10 @@ class UserById extends React.Component {
         return <>
             <Loader show={this.state.loading} />
 
-            {this.state.hasError ?
+            <ShouldRender cond={this.state.hasError}>
                 <Error show={true} />
-                :
+            </ShouldRender>
+            <ShouldRender cond={!this.state.hasError}>
                 <div className="row mt-3">
                     <div className="col-3">
                         <div class="card">
@@ -40,7 +42,7 @@ class UserById extends React.Component {
                         </div>
                     </div>
                 </div>
-            }
+            </ShouldRender>
         </>
     }
 }
