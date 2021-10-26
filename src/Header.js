@@ -1,11 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import userService from './services/userService';
 
-function Header(props) {
+function Header() {
+
+    const history = useHistory();
 
     function onLogout() {
         userService.logout();
-        // props.history.push('/login');
+        history.push('/login');
     }
 
     return <>
