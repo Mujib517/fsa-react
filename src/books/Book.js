@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dateUtils from '../util/dateUtils';
 
 export default function Book({ book, onRemove, history }) {
 
@@ -11,15 +11,11 @@ export default function Book({ book, onRemove, history }) {
         // history.push(`/books/${book.id}/update`, { book: book })
     }
 
-    const getRelativeTime = (dt) => {
-        return moment(dt).fromNow();
-    }
-
     return <tr>
         <td>{book.id}</td>
         <td>{book.name}</td>
         <td>$ {book.price}</td>
-        <td>{getRelativeTime(book.updatedAt)}</td>
+        <td>{dateUtils.getRelativeTime(book.updatedAt)}</td>
         <td>
             <button onClick={onEdit} className="btn btn-sm btn-success">
                 <i className="fa fa-edit"></i>

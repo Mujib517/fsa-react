@@ -40,8 +40,10 @@ const Books = ({ history }) => {
         } catch (e) {
             if (e.response.status === 401) {
                 history.push('/login');
+            }else{
+                // TODO: show error message on the web page
+                console.log(e, "error");
             }
-            console.log(e, "error");
         }
     };
 
