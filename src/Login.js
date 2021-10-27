@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useContext } from "react/cjs/react.development";
+import UserContext from "./context/UserContext";
 import userService from "./services/userService";
 import Error from "./util/Error";
 
@@ -6,6 +8,7 @@ function Login(props) {
 
     const [user, setUser] = useState({});
     const [hasError, setError] = useState(false);
+    const { setLoggedIn } = useContext(UserContext);
 
     function onTextChange(e) {
         const newState = { ...user, [e.target.name]: e.target.value };
@@ -16,6 +19,7 @@ function Login(props) {
         try {
             const res = await userService.login(user);
             userService.saveToken(res.data.token);
+            setLoggedIn(true);
             props.history.push('/books');
         } catch (e) {
             setError(true);

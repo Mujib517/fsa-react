@@ -1,12 +1,17 @@
+import { useContext } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
+import UserContext from './context/UserContext';
 import userService from './services/userService';
+import ShouldRender from './util/ShouldRender';
 
 function Header() {
 
     const history = useHistory();
+    const { isLoggedIn, setLoggedIn } = useContext(UserContext);
 
     function onLogout() {
         userService.logout();
+        setLoggedIn(false);
         history.push('/login');
     }
 
@@ -35,9 +40,13 @@ function Header() {
                             <NavLink activeClassName="active" className="nav-link" to="/count">Counter</NavLink>
                         </li>
                     </ul>
-                    <NavLink to="/login" className="btn btn-danger btn-sm">Login</NavLink>
+                    <ShouldRender cond={!isLoggedIn}>
+                        <NavLink to="/login" className="btn btn-danger btn-sm">Login</NavLink>
+                    </ShouldRender>
                     &nbsp;
-                    <button onClick={onLogout} className="btn btn-danger btn-sm">Logout</button>
+                    <ShouldRender cond={isLoggedIn}>
+                        <button onClick={onLogout} className="btn btn-danger btn-sm">Logout</button>
+                    </ShouldRender>
                 </div>
             </div>
         </nav>

@@ -14,9 +14,15 @@ import NewBook from './books/NewBook';
 import EditBook from './books/EditBook';
 import Login from './Login';
 import BookDetail from './books/BookDetail';
+import UserContext from './context/UserContext';
+import { useState } from 'react/cjs/react.development';
+import userService from './services/userService';
 
 function App() {
-    return <div>
+
+    const [isLoggedIn, setLoggedIn] = useState(userService.isLoggedIn());
+
+    return <UserContext.Provider value={{ isLoggedIn, setLoggedIn }}>
         <BrowserRouter>
             <Header />
             <Switch>
@@ -36,7 +42,7 @@ function App() {
             </Switch>
             <Footer />
         </BrowserRouter>
-    </div>
+    </UserContext.Provider>
 }
 
 export default App;

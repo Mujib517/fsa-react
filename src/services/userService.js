@@ -14,6 +14,9 @@ const userService = {
     },
     logout: function () {
         localStorage.removeItem('token');
+    },
+    isLoggedIn: function () {
+        return !!localStorage.getItem('token');
     }
 }
 
