@@ -4,15 +4,14 @@ function CounterWithHooks() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        // setCount(100);
-        setTimeout(() => {
+        let timer = setInterval(() => {
             let cnt = count;
             console.log(count, 'count');
             setCount(++cnt);
         }, 1000);
-        // return () => {
-        //     console.log("cleaned up");
-        // }
+        return () => {
+            clearInterval(timer);
+        }
     }, [count]);
 
     function onInc() {
