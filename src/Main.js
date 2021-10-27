@@ -1,15 +1,14 @@
-import Callback from "./Callback";
-import SpecialCounter from "./SpecialCounter";
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
+import Header from './Header';
+import Footer from './Footer';
 
 function Main() {
-
-    function notify() {
-        // fetching data
-        console.log("in main component");
-    }
-
-
-    return <Callback onNotify={notify} />
+    return <BrowserRouter>
+        <Header />
+        <Routes />
+        <Footer />
+    </BrowserRouter>
 }
 
 export default Main;
