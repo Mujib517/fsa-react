@@ -27,7 +27,6 @@ function Login(props) {
         }
     }
 
-
     return <div className="container">
         <Error show={hasError} />
         <h1>Login</h1>
